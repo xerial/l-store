@@ -1,3 +1,5 @@
+import com.simplytyped.Antlr4Plugin._
+
 sonatypeProfileName := "org.xerial"
 
 packSettings
@@ -55,8 +57,10 @@ lazy val lstoreCore = Project(
 lazy val lstoreSql = Project(
      id = "lstore-sql",
      base = file("lstore-sql"),
-     settings = Seq(
+     settings = antlr4Settings ++ Seq(
+       antlr4PackageName in Antlr4 := Some("lstore.sql"),
        libraryDependencies := testLibraries ++ Seq(
+         "org.antlr" % "antlr4" % "4.5"
        )
      )
 ) dependsOn(lstoreCore % withTestScope)
@@ -91,6 +95,3 @@ pomExtra in Global := {
           </developers>
 }
 
-antlr4Settings
-
-antlr4PackageName in Antlr4 := Some("lstore")
