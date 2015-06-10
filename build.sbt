@@ -57,7 +57,6 @@ lazy val lstoreSql = Project(
      base = file("lstore-sql"),
      settings = Seq(
        libraryDependencies := testLibraries ++ Seq(
-          "org.parboiled" %% "parboiled" % "2.1.0"
        )
      )
 ) dependsOn(lstoreCore % withTestScope)
@@ -91,3 +90,7 @@ pomExtra in Global := {
             </developer>
           </developers>
 }
+
+antlr4Settings
+
+antlr4PackageName in Antlr4 := Some("lstore")
